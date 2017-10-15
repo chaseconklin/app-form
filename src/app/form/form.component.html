@@ -1,0 +1,51 @@
+<div class="ui grid">
+  <div class="column mobile four wide column computer">
+    <p></p>
+  </div>
+  <div class="eight wide column">
+    <form novalidate
+          #myForm="ngForm"
+          id="inquiry"
+          class = "ui form"
+          (ngSubmit)="onRoomSubmission(myForm)"
+          [ngClass]="{ 'error' : !myForm.valid && myForm.submitted }">
+      <p class="ui item">
+        If you'd like more information about this program or if you'd like us to call you to discuss
+        your options, please complete the form below.
+      </p>
+      <div class="field">
+        <label>First Name</label>
+        <input name="first-name" placeholder="First Name" type="text" [ngModel]="form.firstName" minlength="2" maxlength="15" required>
+      </div>
+      <div class="field">
+        <label>Last Name</label>
+        <input name="last-name" placeholder="Last Name" type="text" [ngModel]="form.lastName" minlength="2" maxlength="15" required>
+      </div>
+      <div class="field">
+        <label>E-mail</label>
+        <input name="email" placeholder="janedoe@email.com" type="email" [ngModel]="form.email" required>
+      </div>
+      <div class="field">
+        <label>Mobile Number</label>
+        <input name="mobile-number" placeholder="1234567890" type="text" [ngModel]="form.number" minlength="7" maxlength="10" required>
+      </div>
+      <div class="field">
+        <label>Comments</label>
+        <textarea name="comments" rows="3" [ngModel]="form.comments" minlength="40"></textarea>
+      </div>
+      <div class="ui error message">
+        <div *ngFor="let error of getErrors()">
+          {{ error | json }}
+        </div>
+      </div>
+      <div class="ui success message">
+        <div class="header">Form Completed</div>
+        <p>Our admissions team will be in touch shortly to talk about your possibilities!</p>
+      </div>
+      <button id="submit" class="ui button" type="submit">Submit</button>
+    </form>
+  </div>
+  <div class = "column mobile four wide column computer">
+    <p></p>
+  </div>
+</div>
